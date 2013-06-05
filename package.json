@@ -1,7 +1,7 @@
 {
   "name": "continuable-series",
   "description": "turn array of continuable into continuable that invokes them in series",
-  "version": "1.0.0",
+  "version": "1..0",
   "homepage": "https://github.com/dominictarr/continuable-series",
   "repository": {
     "type": "git",
