@@ -23,6 +23,20 @@ series([
 
 ```
 
+## Passing in a callback as second argument
+
+`series` also works as a "normal" async function
+
+``` js
+series([
+  continuable1,
+  continuable2,
+  continuable3,
+], function (err, lastValue) {
+  //...
+})
+```
+
 ## License
 
 MIT
