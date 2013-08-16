@@ -44,5 +44,36 @@ test("series: turn into array by defaut", function (assert) {
 
 })
 
+test("series: works with callback", function (assert) {
+  var counter = 0
+
+  series([
+    function (cb) { counter++; cb(null) },
+    function (cb) { counter++; cb(null) },
+    function (cb) { counter++; cb(null, counter * 2) }
+  ], function (err, results) {
+    assert.ifError(err)
+
+    assert.equal(counter, 3)
+    assert.equal(results, 6)
+
+    assert.end()
+  })
+})
+
+test("series: works with callback<Error>", function (assert) {
+  var counter = 0
+
+  series([
+    function (cb) { counter++; cb(null) },
+    function (cb) { counter++; cb(new Error("oops")) },
+    function (cb) { counter++; cb(null, counter * 2) }
+  ], function (err, results) {
+    assert.equal(err.message, "oops")
+    assert.equal(results, undefined)
+
+    assert.end()
+  })
+})
 
 
